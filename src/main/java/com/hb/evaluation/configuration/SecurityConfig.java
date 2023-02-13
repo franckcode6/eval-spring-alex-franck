@@ -23,12 +23,12 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {		
 		
 		http.authorizeHttpRequests()
-			.requestMatchers("/").permitAll();
-//			.requestMatchers("/public/user/**").permitAll()
+			.requestMatchers("/").permitAll()
+			.requestMatchers("/public/user/**").permitAll()
 //			.requestMatchers("/private/post/**").hasAnyRole("USER","ADMIN")
 //			.requestMatchers("/private/user/**").hasRole("ADMIN")
-//			.anyRequest().authenticated()
-//			.and().formLogin();
+			.anyRequest().authenticated()
+			.and().formLogin();
 		
 		return http.build();
 	}
