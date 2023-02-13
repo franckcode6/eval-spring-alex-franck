@@ -54,4 +54,10 @@ public class UserService {
 		user.setRole("USER");
 		userRepository.save(user);
 	}
+
+	public void updateUser(UserFormDTO inputUser) {
+	 LocalUser user = userRepository.getUserByUsername(inputUser.username());
+	 user.setCategories(inputUser.categories());
+	 userRepository.updateUserCategory(user);
+	}
 }

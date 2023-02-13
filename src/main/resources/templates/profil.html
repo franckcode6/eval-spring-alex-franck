@@ -5,9 +5,9 @@
 <title>Profil</title>
 </head>
 <body>
-<h1>Profil</h1>
-<p>This page is your profil.</p>
-<table>
+	<h1>Profil</h1>
+	<p>This page is your profil.</p>
+	<table>
 		<thead>
 			<tr>
 				<th>Id</th>
@@ -23,5 +23,21 @@
 			</tr>
 		</tbody>
 	</table>
+	<form th:action="@{{userId} (userId=${user.id})}" th:object="${userForm}" method="post">
+		<input type="hidden" th:field="${user.username}" /> <br /> 
+		<input type="hidden" th:field="*{password}" /> <br /> 
+		<select th:field="*{categories}" multiple>
+			<option th:value="Java" th:text="Java"></option>
+			<option th:value="PHP" th:text="PHP"></option>
+			<option th:value="Angular" th:text="Angular"></option>
+			<option th:value="ReactJS" th:text="ReactJS"></option>
+			<option th:value="VueJS" th:text="VueJS"></option>
+			<option th:value="Symfony" th:text="Symfony"></option>
+			<option th:value="Spring" th:text="Spring"></option>
+			<option th:value="SQL" th:text="SQL"></option>
+			<option th:value="NoSQL" th:text="NoSQL"></option>
+		</select>
+		<input type="submit" value="Confirm" />
+		</form>
 </body>
 </html>

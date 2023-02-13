@@ -71,4 +71,28 @@ public class UserRepository {
 			e.printStackTrace();
 		}
 	}
+	
+	public void updateUserCategory(LocalUser user) {
+		List<LocalUser> existingsUsers = getUsers();
+		
+		for (LocalUser existingUser : existingsUsers) {
+			if (existingUser.getId() == user.getId()) {
+				existingUser.setCategories(user.getCategories());
+			}
+		}
+		
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			File resourceJson = new File("src/main/resources/users.json");
+			String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingsUsers);
+			
+			logger.info(jsonString);
+			
+			BufferedWriter writer = new BufferedWriter(new FileWriter(resourceJson));
+			writer.write(jsonString);
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

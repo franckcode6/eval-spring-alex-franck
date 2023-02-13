@@ -28,7 +28,15 @@ public class UserController {
 		Integer id = Integer.parseInt(userId);
 		UserDTO user = userService.getUserById(id);
 		ModelAndView mav = new ModelAndView("profil");
+		mav.addObject("userForm", new UserFormDTO("", "", new ArrayList<>()));
 		mav.addObject("user", user);		
+		return mav;
+	}
+	
+	@PostMapping("private/user/{userId}")
+	public ModelAndView profilPage(@ModelAttribute UserFormDTO user) {		
+		userService.updateUser(user);
+		ModelAndView mav = new ModelAndView("redirect:/login");
 		return mav;
 	}
 
