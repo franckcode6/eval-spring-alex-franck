@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Messages List</title>
+</head>
+<body>
+	<h1>Messages list</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Content</th>
+				<th>Category</th>
+			<tr>
+		</thead>
+		<tbody>
+			<tr th:each="message: ${messages}">
+				<td><span th:text="${message.content}" /></td>
+				<td><span th:text="${message.category}" /></td>
+			</tr>
+			<tr>
+				<a th:href="@{/private/message/add}">Add message</a>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

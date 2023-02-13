@@ -1,0 +1,9 @@
+[ {
+  "id" : 1,
+  "content" : "Test Message java",
+  "category" : "Java"
+}, {
+  "id" : 2,
+  "content" : "Test d'un message VueJS",
+  "category" : "VueJS"
+} ]

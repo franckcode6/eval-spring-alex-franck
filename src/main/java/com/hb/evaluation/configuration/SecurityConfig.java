@@ -25,7 +25,7 @@ public class SecurityConfig {
 		http.authorizeHttpRequests()
 			.requestMatchers("/").permitAll()
 			.requestMatchers("/signUp").permitAll()
-//			.requestMatchers("/private/post/**").hasAnyRole("USER","ADMIN")
+			.requestMatchers("/private/message/**").hasRole("USER")
 			.requestMatchers("/private/user/**").hasRole("USER")
 			.anyRequest().authenticated()
 			.and().formLogin();
