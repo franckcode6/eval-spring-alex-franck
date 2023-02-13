@@ -30,7 +30,7 @@ public class UserService {
 		List<UserDTO> userDtos = new ArrayList<>();
 
 		users.forEach((user) -> {
-			userDtos.add(new UserDTO(user.getId(), user.getUsername(), user.getRole()));
+			userDtos.add(new UserDTO(user.getId(), user.getUsername(), user.getRole(), user.getCategories()));
 		});
 
 		return userDtos;
@@ -46,7 +46,7 @@ public class UserService {
 		}
 		return null;
 	}
-	
+
 	public UserDTO getCurrentUser() {
 		String username = SecurityConfig.getUserName();
 		List<UserDTO> users = this.getUsers();

@@ -3,7 +3,7 @@
   "username" : "user",
   "password" : "$2a$10$Nlaf2l7iRCtY44kyym9O5eXiY3vF54e3hBlWzR7/uZUq55HoioXp2",
   "role" : "USER",
-  "categories" : [ "Symfony" ]
+  "categories" : [ "Java", "Symfony" ]
 }, {
   "id" : 2,
   "username" : "toto",

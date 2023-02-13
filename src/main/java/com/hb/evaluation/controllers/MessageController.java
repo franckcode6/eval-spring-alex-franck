@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import com.hb.evaluation.dtos.MessageDTO;
+import com.hb.evaluation.dtos.UserDTO;
 import com.hb.evaluation.services.MessageService;
 import com.hb.evaluation.services.UserService;
 
@@ -28,13 +29,12 @@ public class MessageController {
 	
 	@GetMapping("")
 	public ModelAndView getMessages() {
-		List<MessageDTO> messages = messageService.getMessages();
 		ModelAndView mav = new ModelAndView("messages");
-		mav.addObject("messages", messages);
-		mav.addObject("user", userService.getCurrentUser());
+		UserDTO user = userService.getCurrentUser();
+		mav.addObject("user", user);
+		mav.addObject("messages", messageService.getMessagesByUserCategories(user));
 		return mav;
 	}
-	
 	
 	@GetMapping("/add")
 	public ModelAndView addMessage() {
