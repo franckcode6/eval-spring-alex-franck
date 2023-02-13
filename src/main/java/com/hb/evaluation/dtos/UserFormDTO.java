@@ -1,5 +1,7 @@
 package com.hb.evaluation.dtos;
 
-public record UserFormDTO(String username, String password) {
+import java.util.List;
+
+public record UserFormDTO(String username, String password, List<String> categories) {
 
 }

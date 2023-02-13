@@ -1,5 +1,7 @@
 package com.hb.evaluation.controllers;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,25 +14,24 @@ import com.hb.evaluation.services.UserService;
 @Controller
 public class UserController {
 
-private UserService userService;
-	
+	private UserService userService;
+
 	public UserController(UserService userService) {
-		this.userService = userService;		
+		this.userService = userService;
 	}
-	
-	
+
 	@GetMapping("/signUp")
-	public ModelAndView getRegistrationForm() {		
+	public ModelAndView getRegistrationForm() {
 		ModelAndView mav = new ModelAndView("register");
-		mav.addObject("user", new UserFormDTO("", ""));
+		mav.addObject("user", new UserFormDTO("", "", new ArrayList<>()));
 		return mav;
 	}
-	
+
 	@PostMapping("/signUp")
-	public ModelAndView registerUser(@ModelAttribute UserFormDTO user) {		
-		userService.saveUser(user);		
+	public ModelAndView registerUser(@ModelAttribute UserFormDTO user) {
+		userService.saveUser(user);
 		ModelAndView mav = new ModelAndView("redirect:/login");
-		return mav;		
+		return mav;
 	}
-	
+
 }

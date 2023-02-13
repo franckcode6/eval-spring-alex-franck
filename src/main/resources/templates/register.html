@@ -10,6 +10,18 @@
 	<form th:action="@{/signUp}" th:object="${user}" method="post">
 		<input type="text" th:field="*{username}" /> <br /> 
 		<input type="password" th:field="*{password}" /> <br /> 
+		<label for="category-select">Choose a category</label>
+		<select th:field="*{categories}" multiple>
+			<option th:value="Java" th:text="Java"></option>
+			<option th:value="PHP" th:text="PHP"></option>
+			<option th:value="Angular" th:text="Angular"></option>
+			<option th:value="ReactJS" th:text="ReactJS"></option>
+			<option th:value="VueJS" th:text="VueJS"></option>
+			<option th:value="Symfony" th:text="Symfony"></option>
+			<option th:value="Spring" th:text="Spring"></option>
+			<option th:value="SQL" th:text="SQL"></option>
+			<option th:value="NoSQL" th:text="NoSQL"></option>
+		</select>
 		<input type="submit" value="Register" />
 	</form>
 

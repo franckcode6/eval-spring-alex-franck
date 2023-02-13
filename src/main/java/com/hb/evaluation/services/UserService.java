@@ -39,6 +39,7 @@ public class UserService {
 		LocalUser user = new LocalUser();
 		user.setUsername(inputUser.username());
 		user.setPassword(passwordEncoder.encode(inputUser.password()));
+		user.setCategories(inputUser.categories());
 		user.setRole("USER");
 		userRepository.save(user);
 	}
