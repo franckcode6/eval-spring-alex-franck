@@ -3,5 +3,11 @@
   "username" : "user",
   "password" : "$2a$10$Nlaf2l7iRCtY44kyym9O5eXiY3vF54e3hBlWzR7/uZUq55HoioXp2",
   "role" : "USER",
-  "categories" : [ "PHP", "ReactJS" ]
+  "categories" : [ "Symfony" ]
+}, {
+  "id" : 2,
+  "username" : "toto",
+  "password" : "$2a$10$yWMLOnX8oYAxOSUFttp29.asKiinRTM2OHJY84GE.hwyjcp3FXFza",
+  "role" : "USER",
+  "categories" : [ "ReactJS", "VueJS", "SQL", "NoSQL" ]
 } ]

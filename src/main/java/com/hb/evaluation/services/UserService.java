@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.hb.evaluation.configuration.SecurityConfig;
 import com.hb.evaluation.dtos.UserDTO;
 import com.hb.evaluation.dtos.UserFormDTO;
 import com.hb.evaluation.models.LocalUser;
@@ -45,6 +46,18 @@ public class UserService {
 		}
 		return null;
 	}
+	
+	public UserDTO getCurrentUser() {
+		String username = SecurityConfig.getUserName();
+		List<UserDTO> users = this.getUsers();
+
+		for (UserDTO user : users) {
+			if (user.username().equals(username)) {
+				return user;
+			}
+		}
+		return null;
+	}
 
 	public void saveUser(UserFormDTO inputUser) {
 		LocalUser user = new LocalUser();
@@ -56,8 +69,8 @@ public class UserService {
 	}
 
 	public void updateUser(UserFormDTO inputUser) {
-	 LocalUser user = userRepository.getUserByUsername(inputUser.username());
-	 user.setCategories(inputUser.categories());
-	 userRepository.updateUserCategory(user);
+		LocalUser user = userRepository.getUserByUsername(inputUser.username());
+		user.setCategories(inputUser.categories());
+		userRepository.updateUserCategory(user);
 	}
 }

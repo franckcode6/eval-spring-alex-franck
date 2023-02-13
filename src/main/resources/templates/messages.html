@@ -18,10 +18,9 @@
 				<td><span th:text="${message.content}" /></td>
 				<td><span th:text="${message.category}" /></td>
 			</tr>
-			<tr>
-				<a th:href="@{/private/message/add}">Add message</a>
-			</tr>
 		</tbody>
 	</table>
+	<a th:href="@{/private/message/add}">Add message</a></br>
+	<a th:href="@{user/{userId} (userId=${user.id})}">Page profil</a>
 </body>
 </html>

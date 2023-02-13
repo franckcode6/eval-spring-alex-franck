@@ -12,15 +12,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hb.evaluation.dtos.MessageDTO;
 import com.hb.evaluation.services.MessageService;
+import com.hb.evaluation.services.UserService;
 
 @Controller
 @RequestMapping(value = "/private/message")
 public class MessageController {
 	
 	private MessageService messageService;
+	private UserService userService;
 
-	public MessageController(MessageService messageService) {
+	public MessageController(MessageService messageService, UserService userService) {
 		this.messageService = messageService;
+		this.userService = userService;
 	}
 	
 	@GetMapping("")
@@ -28,6 +31,7 @@ public class MessageController {
 		List<MessageDTO> messages = messageService.getMessages();
 		ModelAndView mav = new ModelAndView("messages");
 		mav.addObject("messages", messages);
+		mav.addObject("user", userService.getCurrentUser());
 		return mav;
 	}
 	
@@ -44,10 +48,8 @@ public class MessageController {
 	public ModelAndView addMessage(@ModelAttribute MessageDTO message) {
 		
 		messageService.addMessage(message);
-		List<MessageDTO> messages = messageService.getMessages();
-		ModelAndView mav = new ModelAndView("messages");
-		mav.addObject("messages", messages);
-		return mav;
+		
+		return new ModelAndView("redirect:/private/message");
 	}
 
 }

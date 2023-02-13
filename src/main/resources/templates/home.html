@@ -15,9 +15,5 @@ Welcome on TwitterLike !
   <a th:href="@{/login}">Se connecter</a>
 </div>
 
-<div sec:authorize="isAuthenticated()">
-<a th:href="@{private/user/{userId} (userId=${user.id})}">Page profil</a>
-</div>
-
 </body>
 </html>
