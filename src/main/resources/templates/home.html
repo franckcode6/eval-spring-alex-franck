@@ -5,14 +5,16 @@
 <title>TwitterLike</title>
 </head>
 <body>
-Welcome on TwitterLike !
+<h1>Welcome on TwitterLike !</h1>
 
-<a th:href="@{/signUp}">S'inscrire</a>
-<div sec:authorize="isAuthenticated()">
-  <a th:href="@{/logout}">Se déconnecter</a>
-</div>
 <div sec:authorize="isAnonymous()">
-  <a th:href="@{/login}">Se connecter</a>
+  <a th:href="@{/login}">Login</a></br>
+<a th:href="@{/signUp}">Sign up</a>
+</div>
+
+<div sec:authorize="isAuthenticated()">
+  <a th:href="@{private/message}">My news feed</a></br>
+  <a th:href="@{/logout}">Logout</a>
 </div>
 
 </body>

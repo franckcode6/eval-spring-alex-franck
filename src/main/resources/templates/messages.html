@@ -5,7 +5,7 @@
 <title>Messages List</title>
 </head>
 <body>
-	<h1>Messages list</h1>
+	<h1>News feed</h1>
 	<table>
 		<thead>
 			<tr>
@@ -21,6 +21,7 @@
 		</tbody>
 	</table>
 	<a th:href="@{/private/message/add}">Add message</a></br>
-	<a th:href="@{user/{userId} (userId=${user.id})}">Page profil</a>
+	<a th:href="@{/private/user/{userId} (userId=${user.id})}">Profil page</a></br>
+	<a th:href="@{/logout}">Logout</a>
 </body>
 </html>

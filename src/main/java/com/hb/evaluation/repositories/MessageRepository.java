@@ -16,24 +16,21 @@ import com.hb.evaluation.models.Message;
 
 @Repository
 public class MessageRepository {
-	
+
 	public List<Message> getMessages() {
 		List<Message> posts = new ArrayList<>();
-		
-		ObjectMapper mapper = new ObjectMapper();		
+
+		ObjectMapper mapper = new ObjectMapper();
 		try {
 			File resourceJson = new ClassPathResource("messages.json").getFile();
-			posts = mapper.readValue(
-					resourceJson, 
-					new TypeReference<List<Message>>() {} );			
+			posts = mapper.readValue(resourceJson, new TypeReference<List<Message>>() {
+			});
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return posts;
 	}
-	
-	
-	
+
 	public void save(Message message) {
 		List<Message> existingsMessages = getMessages();
 		int newId = 0;
@@ -49,7 +46,7 @@ public class MessageRepository {
 		try {
 			File resourceJson = new File("src/main/resources/messages.json");
 			String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingsMessages);
-			
+
 			BufferedWriter writer = new BufferedWriter(new FileWriter(resourceJson));
 			writer.write(jsonString);
 			writer.close();

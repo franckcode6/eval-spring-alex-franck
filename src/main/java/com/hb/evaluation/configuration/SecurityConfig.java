@@ -33,7 +33,6 @@ public class SecurityConfig {
 		return http.build();
 	}
 	
-
 	@Bean
 	public AuthenticationManager authenticationManager(
 			HttpSecurity http, 
@@ -49,8 +48,6 @@ public class SecurityConfig {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
-	
 	
 	public static String getUserName() {
         SecurityContext securityContext = SecurityContextHolder.getContext();

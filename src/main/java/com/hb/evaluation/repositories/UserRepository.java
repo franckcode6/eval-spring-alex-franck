@@ -17,7 +17,7 @@ import com.hb.evaluation.models.LocalUser;
 
 @Repository
 public class UserRepository {
-	
+
 	private final static Logger logger = LoggerFactory.getLogger(UserRepository.class);
 
 	public List<LocalUser> getUsers() {
@@ -26,7 +26,8 @@ public class UserRepository {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			File resourceJson = new File("src/main/resources/users.json");
-			users = mapper.readValue(resourceJson, new TypeReference<List<LocalUser>>() {});
+			users = mapper.readValue(resourceJson, new TypeReference<List<LocalUser>>() {
+			});
 			logger.info("getUsers called - nb users fetched = " + users.size());
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -61,9 +62,9 @@ public class UserRepository {
 		try {
 			File resourceJson = new File("src/main/resources/users.json");
 			String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingsUsers);
-			
+
 			logger.info(jsonString);
-			
+
 			BufferedWriter writer = new BufferedWriter(new FileWriter(resourceJson));
 			writer.write(jsonString);
 			writer.close();
@@ -71,23 +72,23 @@ public class UserRepository {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void updateUserCategory(LocalUser user) {
 		List<LocalUser> existingsUsers = getUsers();
-		
+
 		for (LocalUser existingUser : existingsUsers) {
 			if (existingUser.getId() == user.getId()) {
 				existingUser.setCategories(user.getCategories());
 			}
 		}
-		
+
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			File resourceJson = new File("src/main/resources/users.json");
 			String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingsUsers);
-			
+
 			logger.info(jsonString);
-			
+
 			BufferedWriter writer = new BufferedWriter(new FileWriter(resourceJson));
 			writer.write(jsonString);
 			writer.close();

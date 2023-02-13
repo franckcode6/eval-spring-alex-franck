@@ -15,26 +15,24 @@ import org.springframework.stereotype.Service;
 import com.hb.evaluation.models.LocalUser;
 import com.hb.evaluation.repositories.UserRepository;
 
-
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+
 		LocalUser user = userRepository.getUserByUsername(username);
-		
-		if(user == null) {
+
+		if (user == null) {
 			throw new UsernameNotFoundException(username + " not found");
 		}
-		
+
 		return new User(user.getUsername(), user.getPassword(), getGrantedAuthorities(user.getRole()));
 	}
-	
+
 	private List<GrantedAuthority> getGrantedAuthorities(String role) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
@@ -42,4 +40,3 @@ public class CustomUserDetailsService implements UserDetailsService {
 	}
 
 }
-

@@ -48,9 +48,8 @@ public class MessageService {
 					selectedmessages.add(filteredMessage);
 				}
 			}
-			return selectedmessages;
 		}
-		return null;
+		return selectedmessages;
 	}
 
 }

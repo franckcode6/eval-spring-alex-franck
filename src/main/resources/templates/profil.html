@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Profil</title>
+<title>Profil Page</title>
 </head>
 <body>
 	<h1>Profil</h1>
@@ -25,7 +25,7 @@
 	</table>
 	<form th:action="@{{userId} (userId=${user.id})}" th:object="${userForm}" method="post">
 		<input type="hidden" th:field="${user.username}" /> <br /> 
-		<input type="hidden" th:field="*{password}" /> <br /> 
+		<label>Changer de categories</label></br>
 		<select th:field="*{categories}" multiple>
 			<option th:value="Java" th:text="Java"></option>
 			<option th:value="PHP" th:text="PHP"></option>
@@ -36,8 +36,10 @@
 			<option th:value="Spring" th:text="Spring"></option>
 			<option th:value="SQL" th:text="SQL"></option>
 			<option th:value="NoSQL" th:text="NoSQL"></option>
-		</select>
+		</select></br>
 		<input type="submit" value="Confirm" />
-		</form>
+	</form>
+	<a th:href="@{/private/message}">My news feed</a></br>
+  	<a th:href="@{/logout}">Logout</a>
 </body>
 </html>

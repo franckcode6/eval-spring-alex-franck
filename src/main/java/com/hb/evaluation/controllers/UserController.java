@@ -1,7 +1,6 @@
 package com.hb.evaluation.controllers;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,19 +21,19 @@ public class UserController {
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	@GetMapping("private/user/{userId}")
-	public ModelAndView profilPage(@PathVariable String userId) {		
+	public ModelAndView profilPage(@PathVariable String userId) {
 		Integer id = Integer.parseInt(userId);
 		UserDTO user = userService.getUserById(id);
 		ModelAndView mav = new ModelAndView("profil");
 		mav.addObject("userForm", new UserFormDTO("", "", new ArrayList<>()));
-		mav.addObject("user", user);		
+		mav.addObject("user", user);
 		return mav;
 	}
-	
+
 	@PostMapping("private/user/{userId}")
-	public ModelAndView profilPage(@ModelAttribute UserFormDTO user) {		
+	public ModelAndView profilPage(@ModelAttribute UserFormDTO user) {
 		userService.updateUser(user);
 		ModelAndView mav = new ModelAndView("redirect:/login");
 		return mav;
