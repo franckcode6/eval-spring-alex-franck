@@ -35,6 +35,17 @@ public class UserService {
 		return userDtos;
 	}
 
+	public UserDTO getUserById(Integer id) {
+		List<UserDTO> users = this.getUsers();
+
+		for (UserDTO user : users) {
+			if (user.id() == id) {
+				return user;
+			}
+		}
+		return null;
+	}
+
 	public void saveUser(UserFormDTO inputUser) {
 		LocalUser user = new LocalUser();
 		user.setUsername(inputUser.username());

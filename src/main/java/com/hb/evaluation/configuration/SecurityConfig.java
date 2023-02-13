@@ -26,7 +26,7 @@ public class SecurityConfig {
 			.requestMatchers("/").permitAll()
 			.requestMatchers("/signUp").permitAll()
 //			.requestMatchers("/private/post/**").hasAnyRole("USER","ADMIN")
-//			.requestMatchers("/private/user/**").hasRole("ADMIN")
+			.requestMatchers("/private/user/**").hasRole("USER")
 			.anyRequest().authenticated()
 			.and().formLogin();
 		
