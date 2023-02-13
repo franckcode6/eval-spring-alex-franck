@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add message</title>
+</head>
+<body>
+	<h1>New message</h1>
+
+	<form th:action="@{/private/message/add}" th:object="${message}" method="post">
+		<input type="text" th:field="*{content}"/> <br /> 
+		<select th:field="*{category}">
+			<option th:value="Java" th:text="Java"></option>
+			<option th:value="PHP" th:text="PHP"></option>
+			<option th:value="Angular" th:text="Angular"></option>
+			<option th:value="ReactJS" th:text="ReactJS"></option>
+			<option th:value="VueJS" th:text="VueJS"></option>
+			<option th:value="Symfony" th:text="Symfony"></option>
+			<option th:value="Spring" th:text="Spring"></option>
+			<option th:value="SQL" th:text="SQL"></option>
+			<option th:value="NoSQL" th:text="NoSQL"></option>
+		</select>
+		<input type="submit" value="Add" />
+	</form>
+
+</body>
+</html>
