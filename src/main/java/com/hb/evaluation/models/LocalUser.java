@@ -2,7 +2,7 @@ package com.hb.evaluation.models;
 
 import java.util.List;
 
-public class User {
+public class LocalUser {
 
 	private Integer id;
 	private String username;
@@ -10,11 +10,19 @@ public class User {
 	private String role;
 	private List<String> categories;
 
-	public User() {
+	public LocalUser() {
 
 	}
 
-	public User(Integer id, String username, String password, String role, List<String> categories) {
+	public LocalUser(Integer id, String username, String password, String role) {
+
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+	}
+
+	public LocalUser(Integer id, String username, String password, String role, List<String> categories) {
 
 		this.id = id;
 		this.username = username;
