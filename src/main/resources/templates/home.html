@@ -8,8 +8,16 @@
 Welcome on TwitterLike !
 
 <a th:href="@{/signUp}">S'inscrire</a>
-<a th:href="@{/login}">Se connecter</a>
+<div sec:authorize="isAuthenticated()">
+  <a th:href="@{/logout}">Se déconnecter</a>
+</div>
+<div sec:authorize="isAnonymous()">
+  <a th:href="@{/login}">Se connecter</a>
+</div>
 
+<div sec:authorize="isAuthenticated()">
 <a th:href="@{private/user/{userId} (userId=${user.id})">Page profil</a>
+</div>
+
 </body>
 </html>
